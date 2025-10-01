@@ -1,7 +1,17 @@
 [workflows]
 runButton = "Run"
 
-[[workflows.workflow]]
+[[workflows.Run]]
+language = "nodejs"
+command = "npm run dev"
+
+[[workflows."Deploy to GitHub Pages"]]
+language = "nodejs"
+command = "npm install && npm run build && git add . && git commit -m 'Deploy to GitHub Pages: $(date)' && git push origin main"
+
+[[deployment.rewrites]]
+from = "/*"
+to = "/index.html"orkflows.workflow]]
 name = "Deploy to GitHub Pages"
 author = 46606100
 mode = "sequential"
