@@ -1,0 +1,32 @@
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Deploy to GitHub Pages"
+author = 46606100
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add dist"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"Deploy to GitHub Pages\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git subtree push --prefix dist origin gh-pages"
+
+[[workflows.workflow]]
+name = "Run"
+author = 46606100
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
