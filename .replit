@@ -8,19 +8,23 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
+args = "npm install"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
 args = "npm run build"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "git add dist"
+args = "git add ."
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "git commit -m \"Deploy to GitHub Pages\""
+args = "git commit -m \"Deploy to GitHub Pages: $(date)\""
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "git subtree push --prefix dist origin gh-pages"
+args = "git push origin main"
 
 [[workflows.workflow]]
 name = "Run"
